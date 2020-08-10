@@ -10,6 +10,7 @@ feature 'Admin view car categories' do
     visit root_path
     click_on 'Categorias'
 
+    expect(current_path).to eq car_categories_path
     expect(page).to have_content('Top')
     expect(page).to have_content('Flex')
   end
