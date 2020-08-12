@@ -1,5 +1,13 @@
-<%= @subsidiary.name %>
-<%= @subsidiary.address %>
-<%= @subsidiary.cnpj %>
-<%= link_to "Voltar", subsidiaries_path %>
-<%= link_to "Editar filial", edit_subsidiary_path %>
+<div>
+    <%= @subsidiary.name %>
+</div>
+<div>
+    <%= @subsidiary.address %>
+</div>
+<div>
+    <%= @subsidiary.cnpj %>
+</div>
+<div>
+    <%= link_to "Voltar", subsidiaries_path %>
+    <%= link_to "Editar filial", edit_subsidiary_path %>
+</div>

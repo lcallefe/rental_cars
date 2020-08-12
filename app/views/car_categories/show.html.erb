@@ -1,7 +1,15 @@
-<%= @car_category.name %>
-<%= number_to_currency @car_category.daily_rate %>
-<%= number_to_currency @car_category.car_insurance %>
-<%= number_to_currency @car_category.third_party_insurance %>
+<div>
+    <%= @car_category.name %>
+</div>
+<div>
+    <%= number_to_currency @car_category.daily_rate %>
+</div>
+<div>
+    <%= number_to_currency @car_category.car_insurance %>
+</div>
+<div>
+    <%= number_to_currency @car_category.third_party_insurance %>
+</div>
 <%= link_to "Voltar", car_categories_path %>
 
 
