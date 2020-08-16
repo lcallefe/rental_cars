@@ -15,8 +15,12 @@ class CarCategoriesController < ApplicationController
     def create 
         car_category_params = params.require(:car_category)
                                     .permit(:name, :daily_rate, :car_insurance, :third_party_insurance)
-        @car_category = CarCategory.create (car_category_params) #faz new e ja salva
-        redirect_to car_category_path(id: @car_category.id)
+        @car_category = CarCategory.new (car_category_params) 
+        if @car_category.save
+            redirect_to car_category_path(id: @car_category.id)
+        else
+            #redirect_to new_car_category_path
+            render :new
+        end
     end
-
 end
