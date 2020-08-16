@@ -1,3 +1,8 @@
+<div>
+    <%= link_to "Cadastrar nova filial", new_subsidiary_path %>
+    <%= link_to "Voltar", root_path %>
+</div>
+
 <% if Subsidiary.exists? %>
     <% @subsidiaries.each do |subsidiary| %>
     <%= link_to subsidiary.name, subsidiary_path(subsidiary.id) %>
@@ -6,7 +11,4 @@
     <%= "Nenhuma filial cadastrada" %>
 <% end %>
 
-<div>
-    <%= link_to "Cadastrar nova filial", new_subsidiary_path %>
-    <%= link_to "Voltar", root_path %>
-</div>
+

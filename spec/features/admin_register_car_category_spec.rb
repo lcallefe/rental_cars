@@ -13,7 +13,6 @@ feature 'Admin register manufacturer' do
     visit root_path
     click_on 'Categorias'
     click_on 'Registrar uma nova categoria'
-
     fill_in 'Nome', with: 'Top'
     fill_in 'Diária', with: '100'
     fill_in 'Seguro do carro', with: '50'
@@ -25,6 +24,25 @@ feature 'Admin register manufacturer' do
     expect(page).to have_content('R$ 100,00')
     expect(page).to have_content('R$ 50,00')
     expect(page).to have_content('R$ 10,00')
+    expect(page).to have_link('Voltar')
+  end
+
+  scenario 'and edit details' do
+    visit root_path
+    click_on 'Categorias'
+    click_on 'Registrar uma nova categoria'
+    fill_in 'Nome', with: 'Super'
+    fill_in 'Diária', with: '100'
+    fill_in 'Seguro do carro', with: '50'
+    fill_in 'Seguro para terceiros', with: '10'
+    click_on 'Enviar'
+    click_on 'Editar categoria'
+    fill_in 'Nome', with: 'Master'
+    click_on 'Atualizar dados'
+
+    expect(current_path).to eq car_categories_path 
+    expect(page).to have_content('Master')
+    expect(page).not_to have_content('Super')
     expect(page).to have_link('Voltar')
   end
 end
