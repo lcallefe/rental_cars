@@ -2,8 +2,10 @@ require 'rails_helper'
 
 feature 'Admin view all subsidiaries' do
   scenario 'successfully' do
-    Subsidiary.create!(name: 'Tutoia', cnpj: '00000/0001', address: 'Rua Tutoia, 1157')
-    Subsidiary.create!(name: 'Hortolandia', cnpj: '00000/6667', address: 'Rodovia Jornalista Francisco Aguirre')
+    cnpj_tutoia = CNPJ.generate(true)
+    cnpj_horto = CNPJ.generate(true)
+    Subsidiary.create!(name: 'Tutoia', cnpj: cnpj_tutoia, address: 'Rua Tutoia, 1157')
+    Subsidiary.create!(name: 'Hortolandia', cnpj: cnpj_horto, address: 'Rodovia Jornalista Francisco Aguirre')
 
     visit root_path
     click_on 'Filiais'
@@ -13,15 +15,18 @@ feature 'Admin view all subsidiaries' do
   end
 
   scenario 'and view details' do
-    Subsidiary.create!(name: 'Tutoia', cnpj: '00000/0001', address: 'Rua Tutoia, 1157')
-    Subsidiary.create!(name: 'Hortolandia', cnpj: '00000/6667', address: 'Rodovia Jornalista Francisco Aguirre')
+    cnpj_tutoia = CNPJ.generate(true)
+    cnpj_horto = CNPJ.generate(true)
+    Subsidiary.create!(name: 'Tutoia', cnpj: cnpj_tutoia, address: 'Rua Tutoia, 1157')
+    Subsidiary.create!(name: 'Hortolandia', cnpj: cnpj_horto, address: 'Rodovia Jornalista Francisco Aguirre')
+
     visit root_path
     click_on 'Filiais'
     click_on 'Tutoia'
 
     expect(page).to have_content('Tutoia')
     expect(page).to have_content('Rua Tutoia, 1157')
-    expect(page).to have_content('00000/0001')
+    expect(page).to have_content(cnpj_tutoia)
     expect(page).not_to have_content('Hortolandia')
 
   end 
@@ -34,7 +39,8 @@ feature 'Admin view all subsidiaries' do
   end
 
   scenario 'and return to subsidiaries page' do
-    Subsidiary.create!(name: 'Hortolandia', cnpj: '00000/6667', address: 'Rodovia Jornalista Francisco Aguirre')
+    cnpj_horto = CNPJ.generate(true)
+    Subsidiary.create!(name: 'Hortolandia', cnpj: cnpj_horto, address: 'Rodovia Jornalista Francisco Aguirre')
     
     visit root_path
     click_on 'Filiais'
@@ -45,7 +51,8 @@ feature 'Admin view all subsidiaries' do
   end
 
   scenario 'and return to home page' do
-    Subsidiary.create!(name: 'Hortolandia', cnpj: '00000/6667', address: 'Rodovia Jornalista Francisco Aguirre')
+    cnpj_horto = CNPJ.generate(true)
+    Subsidiary.create!(name: 'Hortolandia', cnpj: cnpj_horto, address: 'Rodovia Jornalista Francisco Aguirre')
     
     visit root_path
     click_on 'Filiais'
