@@ -18,8 +18,11 @@ class CarCategoriesController < ApplicationController
 
     def update
         @car_category = CarCategory.find(params[:id])
-        @car_category.update(car_category_params)
-        redirect_to car_categories_path
+        if @car_category.update(car_category_params)
+            redirect_to car_categories_path
+        else
+            render :edit
+        end
     end
 
     def create 
@@ -27,7 +30,6 @@ class CarCategoriesController < ApplicationController
         if @car_category.save
             redirect_to car_category_path(id: @car_category.id)
         else
-            #redirect_to new_car_category_path
             render :new
         end
     end

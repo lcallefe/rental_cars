@@ -11,7 +11,7 @@ feature 'Admin register valid subsidiary' do
     fill_in 'Nome', with: 'Sergipe'
     fill_in 'CNPJ', with: '30.449.114/0001-84'
     fill_in 'Endereço', with: 'Rua Caramuru, 76'
-    click_on 'Enviar'
+    click_on 'Criar filial'
 
     expect(page).to have_content('já está em uso')
   end
@@ -26,7 +26,7 @@ feature 'Admin register valid subsidiary' do
     fill_in 'Nome', with: 'MT'
     fill_in 'CNPJ', with: '57.944.942/0001-45'
     fill_in 'Endereço', with: 'Av. Jabaquara, 680'
-    click_on 'Enviar'
+    click_on 'Criar filial'
 
     expect(page).to have_content('já está em uso')
   end
@@ -38,7 +38,7 @@ feature 'Admin register valid subsidiary' do
     fill_in 'Nome', with: ''
     fill_in 'CNPJ', with: ''
     fill_in 'Endereço', with: ''
-    click_on 'Enviar'
+    click_on 'Criar filial'
 
     expect(page).to have_content('não pode ficar em branco', count: 3)
   end

@@ -17,7 +17,7 @@ feature 'Admin register manufacturer' do
     fill_in 'Diária', with: '100'
     fill_in 'Seguro do carro', with: '50'
     fill_in 'Seguro para terceiros', with: '10'
-    click_on 'Enviar'
+    click_on 'Criar categoria'
 
     expect(current_path).to eq car_category_path(CarCategory.last)
     expect(page).to have_content('Top')
@@ -35,7 +35,7 @@ feature 'Admin register manufacturer' do
     fill_in 'Diária', with: '100'
     fill_in 'Seguro do carro', with: '50'
     fill_in 'Seguro para terceiros', with: '10'
-    click_on 'Enviar'
+    click_on 'Criar categoria'
     click_on 'Editar categoria'
     fill_in 'Nome', with: 'Master'
     click_on 'Atualizar dados'

@@ -12,7 +12,7 @@ feature 'Admin register valid car category' do
     fill_in 'Diária', with: '100'
     fill_in 'Seguro do carro', with: '50'
     fill_in 'Seguro para terceiros', with: '10'
-    click_on 'Enviar'
+    click_on 'Criar categoria'
 
     expect(page).to have_content('já está em uso')
   end
@@ -25,7 +25,7 @@ feature 'Admin register valid car category' do
     fill_in 'Diária', with: ''
     fill_in 'Seguro do carro', with: ''
     fill_in 'Seguro para terceiros', with: ''
-    click_on 'Enviar'
+    click_on 'Criar categoria'
 
     expect(page).to have_content('não pode ficar em branco', count: 4)
   end

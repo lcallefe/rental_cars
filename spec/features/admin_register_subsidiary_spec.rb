@@ -10,7 +10,7 @@ feature 'Admin register subsidiary' do
     fill_in 'Nome', with: 'São Paulo'
     fill_in 'CNPJ', with: cnpj
     fill_in 'Endereço', with: 'Rua 10'
-    click_on 'Enviar'
+    click_on 'Criar filial'
 
     expect(current_path).to eq subsidiary_path(Subsidiary.last)
     expect(page).to have_content('São Paulo')
@@ -29,7 +29,7 @@ feature 'Admin register subsidiary' do
     fill_in 'Nome', with: 'Florianopolis'
     fill_in 'CNPJ', with: cnpj_sc
     fill_in 'Endereço', with: 'Rua 20'
-    click_on 'Enviar'
+    click_on 'Criar filial'
     click_on 'Editar filial'
     fill_in 'Nome', with: 'Pernambuco'
     fill_in 'CNPJ', with: cnpj_pe
