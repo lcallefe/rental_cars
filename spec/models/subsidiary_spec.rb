@@ -25,12 +25,19 @@ describe Subsidiary, type: :model do
     end
 
     it 'CNPJ must be valid' do
-        invalid_cnpj = rand.to_s[2..15]
-        subsidiary = Subsidiary.create(name: 'Xpto', cnpj: invalid_cnpj, address: 'Rua dos Bobos, 0')
+        cnpjs = [rand.to_s[2..15], '00.000.000/0000-00', '11.111.111/1111-11', '1234']
+        @message = []
+        cnpjs.each do |cnpj|
+          subsidiary = nil
+          subsidiary = Subsidiary.new(name: 'Xpto', cnpj: cnpj, address: 'Rua dos Bobos, 0')
+          subsidiary.save
+          
+          CNPJ.valid?(subsidiary.cnpj)
+          @message << subsidiary.errors[:cnpj]
+        end   
         
-        CNPJ.valid?(subsidiary.cnpj)
-
-        expect(subsidiary.errors[:cnpj]).to include('não é válido')
+        expect(@message.count).to eq 4
+        expect(@message.last).to include('não é válido')
     end
   end
 end
