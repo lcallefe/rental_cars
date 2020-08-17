@@ -25,7 +25,7 @@ describe Subsidiary, type: :model do
     end
 
     it 'CNPJ must be valid' do
-        cnpjs = [rand.to_s[2..15], CNPJ.generate(true)]
+        cnpjs = [rand.to_s[2..15], '00.000.000/0000-00', '11.111.111/1111-11', CNPJ.generate(true)]
         @message = []
         cnpjs.each do |cnpj|
           subsidiary = nil
@@ -37,7 +37,7 @@ describe Subsidiary, type: :model do
           end
         end   
         
-        expect(@message.count).to eq 1
+        expect(@message.count).to eq 3
         expect(@message.first).to include('não é válido')
     end
   end
