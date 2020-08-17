@@ -14,7 +14,7 @@ describe Subsidiary, type: :model do
       expect(subsidiary.errors[:address]).to include('não pode ficar em branco')
     end
 
-    it 'name and CNPJ must be both uniq' do
+    it 'name must be uniq' do
       Subsidiary.create!(name: 'Rio de Janeiro', cnpj: '52.951.622/0001-07', address: 'Rua dos Bobos, 0')
       subsidiary = Subsidiary.new(name: 'Rio de Janeiro', cnpj: '52.951.622/0001-07')
 
