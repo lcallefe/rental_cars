@@ -13,6 +13,7 @@
 <div>
     <%= link_to "Voltar", car_categories_path %>
     <%= link_to "Editar categoria", edit_car_category_path(@car_category) %>
+    <%= link_to "Ver modelos para esta categoria", car_models_path(@car_model) %>
     <%= link_to "Apagar", car_category_path(@car_category), method: :delete,
                           data: { confirm: "Tem certeza que deseja excluir #{@car_category.name}?" } %>
 </div>

@@ -6,7 +6,6 @@ feature 'Admin view car models for a given category' do
                                            third_party_insurance: 20)
     CarModel.create!(name: 'Chevette', year: 1974, manufacturer: 'Chevrolet', 
                      motorization:'1.6', car_category: car_category, fuel_type: 'Alcool')
-    
 
     visit root_path
     click_on 'Categorias'
@@ -17,7 +16,7 @@ feature 'Admin view car models for a given category' do
     expect(page).to have_content('1974')
     expect(page).to have_content('Chevrolet')
     expect(page).to have_content('Top')
-    expect(page).to have_content('Alcool')
+    expect(current_path).to eq car_models_path
   end
 
   xscenario 'and there is more than one car model for that car category' do
