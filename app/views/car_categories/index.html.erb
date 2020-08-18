@@ -1,7 +1,4 @@
-<div>
-    <%= link_to "Voltar", root_path %>
-    <%= link_to "Registrar uma nova categoria", new_car_category_path %>
-</div>
+<h1>Categorias de carro</h1>
 
 <% if CarCategory.exists? %>
     <% @car_categories.each do |category| %>
@@ -10,3 +7,8 @@
 <% else %>
     <%= "Nenhuma categoria cadastrada" %>
 <% end %>
+
+<div>
+    <%= link_to "Voltar", root_path %>
+    <%= link_to "Registrar uma nova categoria", new_car_category_path %>
+</div>

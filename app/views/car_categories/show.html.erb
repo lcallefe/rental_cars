@@ -11,11 +11,16 @@
     <%= number_to_currency @car_category.third_party_insurance %>
 </div>
 
-<h2>Modelos de carro para esta categoria</h2>
+<h6>Modelos de carro para esta categoria</h6>
+
 <% if CarModel.exists? %>
     <% @car_models.each do |car_model| %>
-        <%= link_to "#{car_model.name} - #{car_model.year}", car_model %>
-        <%= car_model.manufacturer %>
+        <div>
+            <%= link_to "#{car_model.name} - #{car_model.year}", car_model %>
+        </div>
+        <div>
+            <%= car_model.manufacturer %>
+        </div>
     <% end %>
 <% else %>
     <%= "Nenhum modelo de carro cadastrado" %>
