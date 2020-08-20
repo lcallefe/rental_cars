@@ -1,0 +1,19 @@
+<% customer.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+<% end %>
+
+<%= form_with model: customer, local: true do |f| %>
+    <div>
+        <%= f.label :name  %>
+        <%= f.text_field :name %>
+    </div>
+    <div>
+        <%= f.label :document %>
+        <%= f.text_field :document  %>
+    </div>
+    <div>
+        <%= f.label :email  %>
+        <%= f.text_field :email %>
+    </div>
+    <%= f.submit button %>
+<% end %>

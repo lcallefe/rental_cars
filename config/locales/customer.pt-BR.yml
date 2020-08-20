@@ -1,0 +1,16 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      customer: 
+        one: 'Nosso cliente'
+        other: 'Nossos clientes'
+    attributes:
+      customer:
+        name: 'Nome'
+        document: 'CPF'
+        email: 'Email'
+
+
+
+    

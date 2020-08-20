@@ -104,7 +104,6 @@ describe CarModel, type: :model do
 
       expect(car_model.errors[:fuel_type]).to include('Insira um tipo de combustível válido: Gasolina, Álcool ou Flex')
     end 
-
   end
 end
 

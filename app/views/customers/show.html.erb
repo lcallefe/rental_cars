@@ -1,0 +1,16 @@
+<div>
+    <%= @customer.name %>
+</div>
+<div>
+    <%= @customer.email %>
+</div>
+<div>
+    <%= @customer.document %>
+</div>
+
+<%= link_to "Voltar", customers_path %>
+<%= link_to "Editar usuário", edit_customer_path(@customer) %>
+
+
+
+
