@@ -29,6 +29,7 @@ describe CarModel, type: :model do
 
       expect(car_model.errors[:name]).to include('Modelo de carro já existente para a categoria')
     end
+
   end
 end
 

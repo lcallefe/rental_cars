@@ -41,12 +41,12 @@ feature 'Admin view car models for a given category' do
   end
 
   scenario 'and car category has no car model associated with' do
-    car_category = CarCategory.create!(name: 'Categoria nova', daily_rate: 100, car_insurance: 50,
+    car_category = CarCategory.create!(name: 'Novos', daily_rate: 100, car_insurance: 50,
                                            third_party_insurance: 20)
     
     visit root_path
     click_on 'Categorias'
-    click_on 'Categoria nova'
+    click_on 'Novos'
 
     expect(page).to have_content('Nenhum modelo de carro cadastrado')
   end 

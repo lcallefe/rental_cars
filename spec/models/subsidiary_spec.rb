@@ -51,7 +51,7 @@ describe Subsidiary, type: :model do
 
       it 'uppercase and lowercase words are the same' do
         Subsidiary.create!(name: 'RORAIMA', cnpj: CNPJ.generate(true), address: 'Avenida Paulista')
-        subsidiary = Subsidiary.new(name: 'RoRaiMA', cnpj: CNPJ.generate(true), address: 'Avenida Paulista')
+        subsidiary = Subsidiary.new(name: 'roraima', cnpj: CNPJ.generate(true), address: 'Avenida Paulista')
   
         subsidiary.valid?
   
@@ -81,5 +81,14 @@ describe Subsidiary, type: :model do
 
         expect(subsidiary.errors[:address]).to include('é muito curto (mínimo: 10 caracteres)')
       end 
+
+      it 'first letter should be capitalized' do
+        subsidiary = Subsidiary.new(name: 'capão redondo', cnpj: CNPJ.generate(true), address: 'rua brasil')
+
+        subsidiary.valid?
+  
+        expect(subsidiary.name).to eq 'Capão Redondo'
+        expect(subsidiary.address).to eq 'Rua Brasil'
+      end   
   end
 end
