@@ -17,13 +17,13 @@ feature 'Admin register valid subsidiary' do
   end
 
   scenario 'and CNPJ must be unique' do
-    Subsidiary.create!(name: 'MS', cnpj: '57.944.942/0001-45', 
+    Subsidiary.create!(name: 'Mato Grosso do Sul', cnpj: '57.944.942/0001-45', 
                        address: 'Av. Jabaquara, 680')
 
     visit root_path
     click_on 'Filiais'
     click_on 'Cadastrar nova filial'
-    fill_in 'Nome', with: 'MT'
+    fill_in 'Nome', with: 'Mato Grosso'
     fill_in 'CNPJ', with: '57.944.942/0001-45'
     fill_in 'Endereço', with: 'Av. Jabaquara, 680'
     click_on 'Criar filial'

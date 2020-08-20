@@ -9,13 +9,13 @@ feature 'Admin register subsidiary' do
     click_on 'Cadastrar nova filial'
     fill_in 'Nome', with: 'São Paulo'
     fill_in 'CNPJ', with: cnpj
-    fill_in 'Endereço', with: 'Rua 10'
+    fill_in 'Endereço', with: 'Avenida São João, 567'
     click_on 'Criar filial'
 
     expect(current_path).to eq subsidiary_path(Subsidiary.last)
     expect(page).to have_content('São Paulo')
     expect(page).to have_content(cnpj)
-    expect(page).to have_content('Rua 10')
+    expect(page).to have_content('Avenida São João, 567')
     expect(page).to have_link('Voltar')
   end
 
@@ -28,7 +28,7 @@ feature 'Admin register subsidiary' do
     click_on 'Cadastrar nova filial'
     fill_in 'Nome', with: 'Florianopolis'
     fill_in 'CNPJ', with: cnpj_sc
-    fill_in 'Endereço', with: 'Rua 20'
+    fill_in 'Endereço', with: 'Avenida BR-404'
     click_on 'Criar filial'
     click_on 'Editar filial'
     fill_in 'Nome', with: 'Pernambuco'
