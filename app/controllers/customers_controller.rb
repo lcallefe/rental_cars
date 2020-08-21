@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  
   def index
     @customers = Customer.all
   end
@@ -31,6 +32,10 @@ class CustomersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def information
+    "#{name} - #{document}"
   end
 
   private
