@@ -1,0 +1,20 @@
+<h1>Carros</h1>
+
+<% if Car.exists? %>
+    <% @cars.each do |car| %>
+        <div>
+            <%= link_to "#{car.car_model.name} - #{car.car_model.year}", car %>
+        </div>
+        <div>
+            <%= "Quilometragem - #{car.mileage} km" %>
+        </div>
+    <% end %>
+<% else %>
+    <%= "Nenhum carro cadastrado" %>
+<% end %>
+
+<div>
+    <%= link_to "Voltar", root_path %>
+    <%= link_to "Registrar carro para frota", new_car_path %>
+</div>
+
