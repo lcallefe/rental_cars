@@ -39,4 +39,52 @@ feature 'Admin register customer' do
     expect(page).not_to have_content('João P')
     expect(page).to have_link('Voltar')
   end
+
+  scenario 'CPF must be unique' do
+    cpf = CPF.generate(true)
+  
+
+    visit root_path
+    click_on 'Nossos clientes'
+    click_on 'Cadastrar cliente'
+    fill_in 'Nome', with: 'João P'
+    fill_in 'Email', with: 'joaop@hotmail.com'
+    fill_in 'CPF', with: cpf
+    click_on 'Cadastrar cliente'
+    click_on 'Voltar'
+    click_on 'Cadastrar cliente'
+    fill_in 'Nome', with: 'Mario Pereira'
+    fill_in 'Email', with: 'joaopereira@gmail.com'
+    fill_in 'CPF', with: cpf
+    click_on 'Cadastrar cliente'
+
+    expect(page).to have_content('CPF já está em uso')
+  end
+
+  scenario 'email must be unique' do
+    visit root_path
+    click_on 'Nossos clientes'
+    click_on 'Cadastrar cliente'
+    fill_in 'Nome', with: 'João P'
+    fill_in 'Email', with: 'lucianacallefe95@hotmail.com'
+    fill_in 'CPF', with: CPF.generate(true)
+    click_on 'Cadastrar cliente'
+    click_on 'Voltar'
+    click_on 'Cadastrar cliente'
+    fill_in 'Nome', with: 'Mario Pereira'
+    fill_in 'Email', with: 'lucianacallefe95@hotmail.com'
+    fill_in 'CPF', with: CPF.generate(true)
+    click_on 'Cadastrar cliente'
+
+    expect(page).to have_content('Email já está em uso')
+  end
+
+  scenario 'and attributes cannot be blank' do
+    visit root_path
+    click_on 'Nossos clientes'
+    click_on 'Cadastrar cliente'
+    click_on 'Cadastrar cliente'
+
+    expect(page).to have_content('não pode ficar em branco', count: 3)
+  end
 end

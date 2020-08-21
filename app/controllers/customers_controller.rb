@@ -20,7 +20,7 @@ class CustomersController < ApplicationController
     if @customer.update(customer_params)
         redirect_to customers_path
     else
-        render :edit
+        render :new
     end
   end
   
@@ -29,7 +29,6 @@ class CustomersController < ApplicationController
     if @customer.save
       redirect_to @customer
     else
-      @customer = Customer.all
       render :new
     end
   end
