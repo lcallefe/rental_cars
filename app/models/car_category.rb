@@ -8,4 +8,8 @@ class CarCategory < ApplicationRecord
   def name=(name)
     write_attribute(:name, name.to_s.titleize)
   end
+
+  def daily_price
+    car_insurance + third_party_insurance + daily_rate
+  end
 end
