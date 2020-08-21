@@ -1,9 +1,5 @@
 <h1>Detalhes do carro</h1>
 <div>
-    <%= 'Placa' %>
-    <%= @car.license_plate %>
-</div>
-<div>
     <%= 'Modelo do carro' %>
     <%= @car.car_model.name %>
 </div>
@@ -17,10 +13,17 @@
 </div>
 <div>
     <%= 'Quilometragem' %>
-    <%= @car.mileage %>
+    <%= "#{@car.mileage} km" %>
 </div>
 <div>
     <%= 'Ano' %>
     <%= @car.car_model.year %>
 </div>
+<div>
+    <%= 'Placa' %>
+    <%= @car.license_plate %>
+</div>
+
+<%= link_to "Voltar", cars_path %>
+
 

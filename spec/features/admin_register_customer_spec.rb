@@ -19,7 +19,16 @@ feature 'Admin register customer' do
     expect(page).to have_link('Voltar')
   end
 
-  scenario 'and edit details' do
+  scenario 'and attributes cannot be blank' do
+    visit root_path
+    click_on 'Nossos clientes'
+    click_on 'Cadastrar cliente'
+    click_on 'Cadastrar cliente'
+
+    expect(page).to have_content('não pode ficar em branco', count: 3)
+  end
+
+  scenario 'edit details' do
     cpf = CPF.generate(true)
    
     visit root_path
@@ -77,14 +86,5 @@ feature 'Admin register customer' do
     click_on 'Cadastrar cliente'
 
     expect(page).to have_content('Email já está em uso')
-  end
-
-  scenario 'and attributes cannot be blank' do
-    visit root_path
-    click_on 'Nossos clientes'
-    click_on 'Cadastrar cliente'
-    click_on 'Cadastrar cliente'
-
-    expect(page).to have_content('não pode ficar em branco', count: 3)
   end
 end

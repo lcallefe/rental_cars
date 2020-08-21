@@ -7,6 +7,24 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
   end
-    
 
+  def new
+    @car = Car.new
+    @car_models = CarModel.all
+    @subsidiaries = Subsidiary.all
+  end
+
+  def create
+    car_params = params.require(:car)
+                .permit(:license_plate, :color, :car_model_id, 
+                        :mileage, :subsidiary_id)
+    @car = Car.new(car_params)
+    if @car.save
+      redirect_to @car
+    else
+      @car_models = CarModel.all
+      @subsidiaries = Subsidiary.all
+      render :new
+    end
+  end
 end

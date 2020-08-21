@@ -1,0 +1,20 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      car: 
+        one: 'Carro'
+        other: 'Carros'
+    attributes:
+      car:
+        license_plate: 'Placa'
+        car_model_id: 'Modelo de carro'
+        subsidiary_id: 'Filial'
+        car_model: 'Modelo de carro'
+        subsidiary: 'Filial'
+        color: 'Cor'
+        mileage: 'Quilometragem'
+
+
+
+    
