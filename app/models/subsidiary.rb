@@ -6,8 +6,7 @@ class Subsidiary < ApplicationRecord
     validates :address, length: { minimum: 10 }
     validates_format_of :name, :with => /\A[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*\Z/, :message => "não é válido"
     validates_format_of :address, :with => /\A[^\s].+[^\s]\Z/, :message => "não é válido"
-    validates_format_of :cnpj, :with => %r[\A\d{2}\.\d{3}.\d{3}/\d{4}-\d{2}\Z], :message => "não é válido"
-    validate :cnpj_cant_be_zero, :cnpj_cant_be_one
+    validate :cnpj_must_be_valid
 
   def name=(name)
     write_attribute(:name, name.to_s.titleize)
@@ -17,14 +16,8 @@ class Subsidiary < ApplicationRecord
     write_attribute(:address, address.to_s.titleize)
   end
  
-  def cnpj_cant_be_zero
-    if cnpj == '00.000.000/0000-00'
-      errors.add(:cnpj, "não é válido")
-    end
-  end
- 
-  def cnpj_cant_be_one
-    if cnpj == '11.111.111/1111-11'
+  def cnpj_must_be_valid
+    if !CNPJ.valid?(cnpj)
       errors.add(:cnpj, "não é válido")
     end
   end
