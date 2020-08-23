@@ -34,9 +34,9 @@ describe CarCategory, type: :model do
     end
 
     it 'uppercase and lowercase words are the same' do
-      CarCategory.create!(name: 'TOP', daily_rate: 105.5, car_insurance: 58.5,
+      CarCategory.create!(name: 'TOp', daily_rate: 105.5, car_insurance: 58.5,
                           third_party_insurance: 10.5)
-      car_category = CarCategory.new(name: 'top', daily_rate: 105.5, car_insurance: 58.5,
+      car_category = CarCategory.new(name: 'toP', daily_rate: 105.5, car_insurance: 58.5,
                                      third_party_insurance: 10.5)
 
       car_category.valid?

@@ -1,7 +1,7 @@
 class Subsidiary < ApplicationRecord
     validates :name, :cnpj, :address, presence: true
     validates :name, :cnpj, uniqueness: true
-    validates_uniqueness_of :name, :case_sensitive => false
+    validates :name, uniqueness: { case_sensitive: true }
     validates :name, length: { minimum: 4 }
     validates :address, length: { minimum: 10 }
     validates_format_of :name, :with => /\A[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*\Z/, :message => "não é válido"
@@ -9,11 +9,11 @@ class Subsidiary < ApplicationRecord
     validate :cnpj_must_be_valid
 
   def name=(name)
-    write_attribute(:name, name.to_s.titleize)
+    write_attribute(:name, name.to_s.downcase.titleize)
   end
 
   def address=(address)
-    write_attribute(:address, address.to_s.titleize)
+    write_attribute(:address, address.to_s.downcase.titleize)
   end
  
   def cnpj_must_be_valid

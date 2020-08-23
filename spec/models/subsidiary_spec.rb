@@ -50,7 +50,7 @@ describe Subsidiary, type: :model do
       end
 
       it 'uppercase and lowercase words are the same' do
-        Subsidiary.create!(name: 'RORAIMA', cnpj: CNPJ.generate(true), address: 'Avenida Paulista')
+        Subsidiary.create!(name: 'RoRAimA', cnpj: CNPJ.generate(true), address: 'Avenida Paulista')
         subsidiary = Subsidiary.new(name: 'roraima', cnpj: CNPJ.generate(true), address: 'Avenida Paulista')
   
         subsidiary.valid?

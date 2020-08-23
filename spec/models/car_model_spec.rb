@@ -45,9 +45,9 @@ describe CarModel, type: :model do
     it 'uppercase and lowercase words are the same' do
       category = CarCategory.create!(name: 'Usados', daily_rate: 105.5, car_insurance: 58.5,
                           third_party_insurance: 10.5)
-      CarModel.create!(name: 'fiesta', year: 2002, manufacturer: 'Ford', 
+      CarModel.create!(name: 'FIesTa', year: 2002, manufacturer: 'Ford', 
                           motorization:'1.0', car_category: category, fuel_type: 'Flex')
-      car_model = CarModel.new(name: 'Fiesta', year: 2002, manufacturer: 'Ford', 
+      car_model = CarModel.new(name: 'FIesta', year: 2002, manufacturer: 'Ford', 
                           motorization:'1.0', car_category: category, fuel_type: 'Flex')
 
       car_model.valid?
