@@ -1,10 +1,17 @@
 require 'rails_helper'
 
 feature 'Admin view all subsidiaries' do
-  scenario 'and must be signed in' do
-  
-    visit root_path
-    click_on 'Filiais'
+  scenario 'and must be signed in to view list' do
+
+    visit subsidiaries_path
+    
+    expect(current_path).to eq new_user_session_path
+  end
+
+  scenario 'and must be signed in to view details' do
+    subsidiary = Subsidiary.create!(name: 'Tutoia', cnpj: '52.762.918/6965-32', address: 'Rua Tutoia, 1157')
+
+    visit subsidiary_path(subsidiary)
     
     expect(current_path).to eq new_user_session_path
   end

@@ -3,8 +3,7 @@ require 'rails_helper'
 feature 'Admin register car' do
   scenario 'and must be signed in' do
   
-    visit root_path
-    click_on 'Carros'
+    visit new_car_path
     
     expect(current_path).to eq new_user_session_path
   end

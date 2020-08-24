@@ -3,8 +3,7 @@ require 'rails_helper'
 feature 'Admin register customer' do
   scenario 'and must be signed in' do
   
-    visit root_path
-    click_on 'Nossos clientes'
+    visit new_customer_path
     
     expect(current_path).to eq new_user_session_path
   end

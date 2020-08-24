@@ -1,9 +1,10 @@
 require 'rails_helper'
 feature 'Admin edit customer' do
   scenario 'and must be signed in' do
+    customer = Customer.create!(name: 'Maria', email: 'maria@gmail.com', 
+                                document: '350.105.082-81')
   
-    visit root_path
-    click_on 'Nossos clientes'
+    visit edit_customer_path(customer)
     
     expect(current_path).to eq new_user_session_path
   end

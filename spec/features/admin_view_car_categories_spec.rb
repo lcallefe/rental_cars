@@ -1,10 +1,18 @@
 require 'rails_helper'
 
 feature 'Admin view car categories' do
-  scenario 'and must be signed in' do
-  
-    visit root_path
-    click_on 'Categorias'
+  scenario 'and must be signed in to view list' do
+   
+    visit car_categories_path
+    
+    expect(current_path).to eq new_user_session_path
+  end
+
+  scenario 'and must be signed in to view details' do
+    category = CarCategory.create!(name: 'Top', daily_rate: 105.5, car_insurance: 58.5,
+                        third_party_insurance: 10.5)
+   
+    visit car_category_path(category)
     
     expect(current_path).to eq new_user_session_path
   end

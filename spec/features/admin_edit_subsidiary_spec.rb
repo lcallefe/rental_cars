@@ -1,9 +1,10 @@
 require 'rails_helper'
 feature 'Admin edit subsidiary' do
   scenario 'and must be signed in' do
-  
-    visit root_path
-    click_on 'Filiais'
+    subsidiary = Subsidiary.create!(name: 'Goias', cnpj: '12.877.998/3524-67', 
+                                    address: 'Avenida Jabaquara')
+                          
+    visit edit_subsidiary_path(subsidiary)
     
     expect(current_path).to eq new_user_session_path
   end

@@ -1,10 +1,17 @@
 require 'rails_helper'
 
 feature 'Admin view all customers' do
-  scenario 'and must be signed in' do
-  
-    visit root_path
-    click_on 'Nossos clientes'
+  scenario 'and must be signed in to view list' do
+
+    visit car_categories_path
+    
+    expect(current_path).to eq new_user_session_path
+  end
+
+  scenario 'and must be signed in to view details' do
+    customer = Customer.create!(name: 'João', document: '975.909.546-75', email: 'joão@gmail.com')
+
+    visit car_category_path(customer)
     
     expect(current_path).to eq new_user_session_path
   end

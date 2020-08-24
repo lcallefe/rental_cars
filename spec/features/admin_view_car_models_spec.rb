@@ -1,10 +1,20 @@
 require 'rails_helper'
 
 feature 'Admin view car models' do
-  scenario 'and must be signed in' do
+  scenario 'and must be signed in to view list' do
+ 
+    visit car_models_path
+    
+    expect(current_path).to eq new_user_session_path
+  end
+
+  scenario 'and must be signed in to view details' do
+    car_category = CarCategory.create!(name: 'Top', daily_rate: 200, car_insurance: 50,
+                                       third_party_insurance: 20)
+    car_model = CarModel.create!(name: 'KA', year: 2019, manufacturer: 'Ford', 
+                     motorization:'1.0', car_category: car_category, fuel_type: 'Flex')
   
-    visit root_path
-    click_on 'Modelos de carro'
+    visit car_model_path(car_model)
     
     expect(current_path).to eq new_user_session_path
   end

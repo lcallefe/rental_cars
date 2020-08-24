@@ -2,9 +2,10 @@ require 'rails_helper'
 
 feature 'Admin edit car car_category' do
   scenario 'and must be signed in' do
+    category = CarCategory.create!(name: 'Top', daily_rate: 105.5, car_insurance: 58.5,
+                                   third_party_insurance: 10.5)
     
-    visit root_path
-    click_on 'Categorias'
+    visit edit_car_category_path(category)
     
     expect(current_path).to eq new_user_session_path
   end

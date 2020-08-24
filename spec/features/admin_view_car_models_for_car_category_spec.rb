@@ -1,14 +1,6 @@
 require 'rails_helper'
 
 feature 'Admin view car models for a given category' do
-  scenario 'and must be signed in' do
-  
-    visit root_path
-    click_on 'Categorias'
-    
-    expect(current_path).to eq new_user_session_path
-  end
-  
   scenario 'successfully' do
     car_category = CarCategory.create!(name: 'Master', daily_rate: 200, car_insurance: 50,
                                            third_party_insurance: 20)
