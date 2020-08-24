@@ -1,1 +1,28 @@
-<%= link_to 'Agendar nova locação', new_rental_path %>
+<h1>Locações</h1>
+
+<% if Rental.exists? %>
+  <% @rentals.each do |rental| %>
+    <div>
+      <%= 'Nome do cliente:' %>
+      <%= link_to "#{rental.customer.name}", rental %>
+    </div>
+    <div>
+      <%= 'Categoria do carro alugado:' %>
+      <%= rental.car_category.name %>
+    </div>
+    <div>
+      <%= 'Usuário responsável pela locação:' %>
+      <%= rental.user.name %>
+    </div>
+<% end %>
+<% else %>
+    <%= "Nenhuma locação realizada" %>
+<% end %>
+
+<div>
+    <%= link_to "Voltar", root_path %>
+    <%= link_to 'Agendar nova locação', new_rental_path %>
+</div>
+
+
+

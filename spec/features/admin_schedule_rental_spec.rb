@@ -30,7 +30,7 @@ feature 'Admin schedule rental' do
     expect(page).to have_content('Categoria')
     expect(page).to have_content('R$ 800,00')
     expect(page).to have_content('Agendamento realizado com sucesso')
-    end
+  end
 
   xscenario 'must fill all fields' do
     user_login()
@@ -40,9 +40,12 @@ feature 'Admin schedule rental' do
     click_on 'Agendar nova locação'
     click_on 'Agendar'
 
-    expect(page).to have_content('Data de início não pode ficar em branco')
-    expect(page).to have_content('Data de término não pode ficar em branco')
+    # expect(page).to have_content('Data de início não pode ficar em branco')
+    # expect(page).to have_content('Data de término não pode ficar em branco')
     expect(page).to have_content('Cliente não pode ficar em branco')
-    expect(page).to have_content('Categoria não pode ficar em branco')
+    expect(page).to have_content('Categoria de carro não pode ficar em branco')
+    expect(page).to have_content('Escolha o cliente')
+    expect(page).to have_content('Escolha a categoria de carro')
   end
+end 
 
