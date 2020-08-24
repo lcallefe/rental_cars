@@ -17,4 +17,8 @@ class Customer < ApplicationRecord
     end
   end
 
+  def information
+    "#{name} - #{document}"
+  end
+
 end

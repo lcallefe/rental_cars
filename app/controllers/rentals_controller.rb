@@ -6,7 +6,7 @@ class RentalsController < ApplicationController
   end
   
   def show
-    @rentals = Rental.find(params[:id])
+    @rental = Rental.find(params[:id])
   end
 
   def new

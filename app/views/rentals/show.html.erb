@@ -13,5 +13,5 @@
     <dt>Categoria de carro</dt>
     <dd><%= @rental.car_category.name %></dd>
     <dt>Previsão de valor</dt>
-    <dd><%= @rental.total %></dd>
+    <dd><%= number_to_currency @rental.total %></dd>
 </dl>
