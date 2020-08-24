@@ -67,5 +67,29 @@ describe CarCategory, type: :model do
 
       expect(car_category.name).to eq 'Antigos E Flex'
     end   
+
+    it 'third_party_insurance must be greater than zero' do
+      car_category = CarCategory.new(name: 'antigos e flex', daily_rate: 200.5, car_insurance: 33.8,
+                                     third_party_insurance: 0)
+      car_category.valid?
+
+      expect(car_category.errors[:third_party_insurance]).to include('deve ser maior que 0')
+    end
+
+    it 'car_insurance must be greater than zero' do
+      car_category = CarCategory.new(name: 'antigos e flex', daily_rate: 200.5, car_insurance: 0,
+                                     third_party_insurance: 100)
+      car_category.valid?
+
+      expect(car_category.errors[:car_insurance]).to include('deve ser maior que 0')
+    end
+
+    it 'daily_rate must be greater than zero' do
+      car_category = CarCategory.new(name: 'antigos e flex', daily_rate: 0, car_insurance: 250,
+                                     third_party_insurance: 100)
+      car_category.valid?
+
+      expect(car_category.errors[:daily_rate]).to include('deve ser maior que 0')
+    end
   end
 end
