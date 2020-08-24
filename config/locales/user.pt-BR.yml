@@ -2,11 +2,11 @@
 pt-BR:
   activerecord:
     models:
-      user: 
-        one: 'Usuário'
+      user: Usuário
     attributes:
       user:
-        name: 'Nome'
-        password: 'Senha'
+        name: Nome
+        email: Email
+        password: Senha
         
         

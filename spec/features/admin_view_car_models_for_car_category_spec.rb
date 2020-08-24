@@ -1,11 +1,20 @@
 require 'rails_helper'
 
 feature 'Admin view car models for a given category' do
+  scenario 'and must be signed in' do
+  
+    visit root_path
+    click_on 'Categorias'
+    
+    expect(current_path).to eq new_user_session_path
+  end
+  
   scenario 'successfully' do
     car_category = CarCategory.create!(name: 'Master', daily_rate: 200, car_insurance: 50,
                                            third_party_insurance: 20)
     CarModel.create!(name: 'Chevette', year: 1974, manufacturer: 'Chevrolet', 
                      motorization:'1.6', car_category: car_category, fuel_type: 'Alcool')
+    user_login()
 
     visit root_path
     click_on 'Categorias'
@@ -26,7 +35,8 @@ feature 'Admin view car models for a given category' do
                      motorization:'1.3', car_category: car_category, fuel_type: 'Alcool')
     CarModel.create!(name: 'Voyage', year: 1994, manufacturer: 'Volkswagen', 
                      motorization:'1.8', car_category: car_category, fuel_type: 'Gasolina')
-    
+    user_login()
+
     visit root_path
     click_on 'Categorias'
     click_on 'Antigos'
@@ -43,7 +53,8 @@ feature 'Admin view car models for a given category' do
   scenario 'and car category has no car model associated with' do
     car_category = CarCategory.create!(name: 'Novos', daily_rate: 100, car_insurance: 50,
                                            third_party_insurance: 20)
-    
+    user_login()
+
     visit root_path
     click_on 'Categorias'
     click_on 'Novos'
@@ -58,7 +69,8 @@ feature 'Admin view car models for a given category' do
                      motorization:'1.0', car_category: car_category, fuel_type: 'Flex')
     CarModel.create!(name: 'Gol', year: 2005, manufacturer: 'Volkswagen', 
                      motorization:'1.0', car_category: car_category, fuel_type: 'Flex')
-
+    user_login()
+    
     visit root_path
     click_on 'Categorias'
     click_on 'Econômicos'

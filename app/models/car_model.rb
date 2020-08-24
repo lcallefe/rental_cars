@@ -18,4 +18,7 @@ class CarModel < ApplicationRecord
     write_attribute(:manufacturer, manufacturer.to_s.downcase.titleize)
   end
 
+  def fuel_type=(fuel_type)
+    write_attribute(:fuel_type, fuel_type.to_s.capitalize)
+  end
 end

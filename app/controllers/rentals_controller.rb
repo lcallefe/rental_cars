@@ -1,4 +1,6 @@
 class RentalsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @rentals = Rental.all
   end

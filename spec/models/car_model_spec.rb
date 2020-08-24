@@ -90,10 +90,11 @@ describe CarModel, type: :model do
       category = CarCategory.new(name: 'Usados', daily_rate: 200.5, car_insurance: 33.8,
                                      third_party_insurance: 20.5)
       car_model = CarModel.create(name: 'tempra', year: 1995, manufacturer: 'fiat', 
-                               motorization:'1.0', car_category: category, fuel_type: 'Flex')
+                               motorization:'1.0', car_category: category, fuel_type: 'alcool')
 
       expect(car_model.name).to eq 'Tempra'
       expect(car_model.manufacturer).to eq 'Fiat'
+      expect(car_model.fuel_type).to eq 'Alcool'
     end   
 
     it 'fuel_type must be Álcool, Flex or Gasolina' do

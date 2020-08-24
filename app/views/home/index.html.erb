@@ -1,13 +1,19 @@
-<%= link_to 'Entrar' %>
 <header>
-    <h1>Rental Cars</h1>
-    <h2>Bem vindo ao sistema de gestão de locação</h2>
+  <h1>Rental Cars</h1>
+  <h2>Bem vindo ao sistema de gestão de locação</h2>
 </header>
-<a href="<%=car_categories_path %>">Categorias</a>
-<a href="<%=subsidiaries_path %>">Filiais</a>
+<%= link_to 'Categorias', car_categories_path %>
+<%= link_to 'Filiais', subsidiaries_path %>
 <%= link_to 'Modelos de carro', car_models_path %>
 <%= link_to 'Nossos clientes', customers_path %>
 <%= link_to 'Carros', cars_path %>
 <%= link_to 'Locações', rentals_path %>
+
+<% if user_signed_in? %>
+  <%= current_user.name %>
+  <%= link_to 'Sair', destroy_user_session_path, method: :delete, data: { confirm: "Tem certeza que deseja sair?" } %>
+<% else %>
+  <%= link_to 'Entrar', new_user_session_path %>
+<% end %>
 
 

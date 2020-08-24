@@ -1,9 +1,18 @@
 require 'rails_helper'
 
 feature 'Admin register valid subsidiary' do
+  scenario 'and must be signed in' do
+  
+    visit root_path
+    click_on 'Filiais'
+    
+    expect(current_path).to eq new_user_session_path
+  end
+  
   scenario 'and name must be unique' do
     Subsidiary.create!(name: 'Sergipe', cnpj: '01.077.297/0001-56', 
                        address: 'Rua Dr Nogueira Martins, 680')
+    user_login()                   
 
     visit root_path
     click_on 'Filiais'
@@ -19,6 +28,7 @@ feature 'Admin register valid subsidiary' do
   scenario 'and CNPJ must be unique' do
     Subsidiary.create!(name: 'Mato Grosso do Sul', cnpj: '57.944.942/0001-45', 
                        address: 'Av. Jabaquara, 680')
+    user_login()
 
     visit root_path
     click_on 'Filiais'
@@ -32,12 +42,11 @@ feature 'Admin register valid subsidiary' do
   end
 
   scenario 'and attributes cannot be blank' do
+    user_login()
+
     visit root_path
     click_on 'Filiais'
     click_on 'Cadastrar nova filial'
-    fill_in 'Nome', with: ''
-    fill_in 'CNPJ', with: ''
-    fill_in 'Endereço', with: ''
     click_on 'Criar filial'
 
     expect(page).to have_content('não pode ficar em branco', count: 3)
